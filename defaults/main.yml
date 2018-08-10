@@ -1,0 +1,4 @@
+---
+ebpf_exporter_web_listen_address: "0.0.0.0:9100"
+
+ebpf_exporter_config_dir: /etc/ebpf_exporter

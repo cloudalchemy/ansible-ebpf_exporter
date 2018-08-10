@@ -1,0 +1,27 @@
+---
+galaxy_info:
+  author: Pawel Krupa
+  description: Cloudflare eBPF exporter
+  license: MIT
+  min_ansible_version: 2.4
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+        - xenial
+    - name: Debian
+      versions:
+        - stretch
+    - name: Fedora
+      versions:
+        - 27
+  galaxy_tags:
+    - monitoring
+    - prometheus
+    - ebpf
+    - tracing
+    - exporter
+    - metrics
+    - system
+
+dependencies: []

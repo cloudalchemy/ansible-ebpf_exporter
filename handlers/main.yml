@@ -1,0 +1,6 @@
+---
+- name: restart ebpf_exporter
+  systemd:
+    daemon_reload: true
+    name: ebpf_exporter
+    state: restarted

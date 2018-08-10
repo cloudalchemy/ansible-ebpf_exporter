@@ -1,0 +1,47 @@
+---
+- name: Install dependencies
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ ebpf_exporter_dependencies }}"
+
+- name: Download ebpf_exporter binary to local folder
+  become: false
+  get_url:
+    url: "https://github.com/prometheus/ebpf_exporter/releases/download/v{{ ebpf_exporter_version }}/ebpf_exporter-{{ ebpf_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+    dest: "/tmp/ebpf_exporter-{{ ebpf_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+    checksum: "sha256:{{ ebpf_exporter_checksum }}"
+  register: _download_binary
+  until: _download_binary is succeeded
+  retries: 5
+  delay: 2
+  delegate_to: localhost
+  check_mode: false
+
+- name: Unpack ebpf_exporter binary
+  become: false
+  unarchive:
+    src: "/tmp/ebpf_exporter-{{ ebpf_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}.tar.gz"
+    dest: "/tmp"
+    creates: "/tmp/ebpf_exporter-{{ ebpf_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/ebpf_exporter"
+  delegate_to: localhost
+  check_mode: false
+
+- name: Propagate ebpf_exporter binaries
+  copy:
+    src: "/tmp/ebpf_exporter-{{ ebpf_exporter_version }}.linux-{{ go_arch_map[ansible_architecture] | default(ansible_architecture) }}/ebpf_exporter"
+    dest: "/usr/local/bin/ebpf_exporter"
+    mode: 0750
+    owner: root
+    group: root
+  notify: restart ebpf_exporter
+  when: not ansible_check_mode
+
+- name: Copy the ebpf_exporter systemd service file
+  template:
+    src: ebpf_exporter.service.j2
+    dest: /etc/systemd/system/ebpf_exporter.service
+    owner: root
+    group: root
+    mode: 0644
+  notify: restart ebpf_exporter

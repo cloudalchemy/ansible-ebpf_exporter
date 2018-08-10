@@ -1,0 +1,15 @@
+---
+- name: Check if kernel is in supported version (min 4.1)
+  assert:
+    that:
+      - ansible_kernel | version_compare('4.1', '>=')
+
+- name: Naive assertion of proper listen address
+  assert:
+    that:
+      - "':' in ebpf_exporter_web_listen_address"
+
+- name: Fail on unsupported init systems
+  fail:
+    msg: "This module only works with systemd"
+  when: ansible_service_mgr != 'systemd'
