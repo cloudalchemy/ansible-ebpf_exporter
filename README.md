@@ -10,6 +10,8 @@
 
 :construction: THIS REPOSITORY IS A WORK IN PROGRESS :construction:
 
+Currently this is blocked by [lack of releases from upstream project](https://github.com/cloudflare/ebpf_exporter/issues/32)
+
 ## Description
 
 Deploy cloudflare [ebpf exporter](https://github.com/cloudflare/ebpf_exporter) using ansible. More about eBPF: 
