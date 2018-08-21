@@ -5,13 +5,15 @@
     state: directory
     owner: root
     group: root
-    recurse: true
-    mode: 0755
+    mode: 0750
 
 - name: Create config file
   template:
     src: config.yaml.j2
     dest: "{{ ebpf_exporter_config_dir }}/config.yaml"
+    owner: root
+    group: root
+    mode: 0640
   notify: restart ebpf_exporter
 
 - name: Allow ebpf_exporter port in SELinux on RedHat OS family
