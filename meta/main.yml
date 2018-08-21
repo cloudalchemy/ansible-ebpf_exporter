@@ -9,9 +9,6 @@ galaxy_info:
       versions:
         - bionic
         - xenial
-    - name: Debian
-      versions:
-        - stretch
     - name: Fedora
       versions:
         - 27

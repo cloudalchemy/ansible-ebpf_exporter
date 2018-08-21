@@ -11,6 +11,11 @@
   tags:
     - always
 
+- import_tasks: libbcc.yml
+  become: true
+  tags:
+    - install
+
 - import_tasks: install.yml
   become: true
   tags:

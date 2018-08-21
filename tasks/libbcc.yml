@@ -1,0 +1,32 @@
+---
+- name: Add iovisor repository file [Fedora]
+  template:
+    src: iovisor.repo.j2
+    dest: /etc/yum.repos.d/iovisor.repo
+    force: true
+    backup: true
+  when: ansible_pkg_mgr == 'dnf'
+
+- block:
+    - name: Import iovisor GPG signing key [Ubuntu]
+      apt_key:
+        keyserver: keyserver.ubuntu.com
+        id: D4284CDD
+        state: present
+        validate_certs: false
+      register: _add_apt_key
+      until: _add_apt_key is succeeded
+      retries: 5
+      delay: 2
+
+    - name: Add iovisor repository [Ubuntu]
+      apt_repository:
+        repo: "deb https://repo.iovisor.org/apt/xenial xenial main"
+        state: present
+        update_cache: true
+      register: _update_apt_cache
+      until: _update_apt_cache is succeeded
+      retries: 5
+      delay: 2
+  when:
+    - ansible_pkg_mgr == "apt"

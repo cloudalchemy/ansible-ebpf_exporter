@@ -7,7 +7,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_directories(host):
     dirs = [
-        "/var/lib/node_exporter"
+        "/etc/ebpf_exporter"
     ]
     for dir in dirs:
         d = host.file(dir)
@@ -17,8 +17,8 @@ def test_directories(host):
 
 def test_files(host):
     files = [
-        "/etc/systemd/system/node_exporter.service",
-        "/usr/local/bin/node_exporter"
+        "/etc/systemd/system/ebpf_exporter.service",
+        "/usr/local/bin/ebpf_exporter"
     ]
     for file in files:
         f = host.file(file)
@@ -27,7 +27,7 @@ def test_files(host):
 
 
 def test_service(host):
-    s = host.service("node_exporter")
+    s = host.service("ebpf_exporter")
     assert s.is_enabled
     assert s.is_running
 

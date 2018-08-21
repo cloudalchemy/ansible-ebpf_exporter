@@ -1,1 +1,5 @@
 ---
+ebpf_exporter_dependencies:
+  - bcc-tools
+  - kernel-devel
+  - kernel-headers

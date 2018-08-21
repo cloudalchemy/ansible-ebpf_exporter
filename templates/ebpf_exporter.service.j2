@@ -9,7 +9,8 @@ Type=simple
 User=root
 Group=root
 ExecStart=/usr/local/bin/ebpf_exporter \
-    --web.listen-address={{ ebpf_exporter_web_listen_address }}
+    --web.listen-address={{ ebpf_exporter_web_listen_address }} \
+    --config.file={{ ebpf_exporter_config_dir }}/config.yaml
 
 SyslogIdentifier=ebpf_exporter
 Restart=always

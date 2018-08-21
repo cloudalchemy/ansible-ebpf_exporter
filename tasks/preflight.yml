@@ -1,8 +1,8 @@
 ---
-- name: Check if kernel is in supported version (min 4.1)
+- name: Check if kernel is in supported version (min 4.2)
   assert:
     that:
-      - ansible_kernel | version_compare('4.1', '>=')
+      - ansible_kernel is version('4.2', '>=')
 
 - name: Naive assertion of proper listen address
   assert:
@@ -13,3 +13,13 @@
   fail:
     msg: "This module only works with systemd"
   when: ansible_service_mgr != 'systemd'
+
+- name: Get checksum list from github
+  set_fact:
+    _checksums: "{{ lookup('url', 'https://github.com/cloudflare/ebpf_exporter/releases/download/v' + ebpf_exporter_version + '/sha256sums.txt', wantlist=True) | list }}"
+  run_once: true
+
+- name: "Get checksum"
+  set_fact:
+    ebpf_exporter_checksum: "{{ item.split(' ')[0] }}"
+  with_items: "{{ _checksums[0] }}"
