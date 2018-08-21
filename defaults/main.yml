@@ -1,6 +1,31 @@
 ---
 ebpf_exporter_version: 1.0.0
 
-ebpf_exporter_web_listen_address: "0.0.0.0:9100"
+ebpf_exporter_web_listen_address: "0.0.0.0:9435"
 
 ebpf_exporter_config_dir: /etc/ebpf_exporter
+
+# By default we are running timers.yaml, just because this is the shortest example config.
+# More examples can be found in ebpf_exporter repository:
+# https://github.com/cloudflare/ebpf_exporter/tree/master/examples
+ebpf_exporter_programs:
+  - name: timers
+    metrics:
+      counters:
+        - name: timer_start_total
+          help: Timers fired in the kernel
+          table: counts
+          labels:
+            - name: function
+              size: 8
+              decoders:
+                - name: ksym
+    tracepoints:
+      timer:timer_start: tracepoint__timer__timer_start
+    code: |
+      BPF_HASH(counts, u64);
+      // Generates function tracepoint__timer__timer_start
+      TRACEPOINT_PROBE(timer, timer_start) {
+          counts.increment((u64) args->function);
+          return 0;
+      }
