@@ -34,7 +34,7 @@ def test_service(host):
 
 def test_socket(host):
     sockets = [
-        "tcp://0.0.0.0:9345"
+        "tcp://0.0.0.0:9435"
     ]
     for socket in sockets:
         s = host.socket(socket)
