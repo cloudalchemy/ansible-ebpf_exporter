@@ -41,6 +41,10 @@ provisioner:
     destroy: destroy.yml
 scenario:
   name: default
+  test_sequence:
+    - lint
+    - dependency
+    - syntax
 verifier:
   name: testinfra
   lint:
