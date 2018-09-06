@@ -29,6 +29,7 @@
 - name: Ensure Node Exporter is enabled on boot
   become: true
   systemd:
+    daemon_reload: true
     name: ebpf_exporter
     enabled: true
   tags:
