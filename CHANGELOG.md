@@ -1,5 +1,6 @@
 # Change Log
 
+## [0.0.1](https://galaxy.ansible.com/cloudalchemy/ebpf-exporter) (2018-09-16)
 ## [0.0.0](https://galaxy.ansible.com/cloudalchemy/ebpf-exporter) (2018-09-16)
 **Closed issues:**
 
