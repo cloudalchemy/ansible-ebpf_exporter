@@ -4,6 +4,7 @@ language: python
 cache: pip
 install:
   - pip install git-semver
+script: echo
 deploy:
   provider: script
   skip_cleanup: true
