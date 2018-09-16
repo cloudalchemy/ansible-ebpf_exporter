@@ -1,19 +1,6 @@
 ---
 sudo: required
-language: python
-cache: pip
-services:
-  - docker
-env:
-#  - ANSIBLE=2.4
-#  - ANSIBLE=2.5
-  - ANSIBLE=2.6
-matrix:
-  fast_finish: true
-install:
-  - pip install tox-travis git-semver
-script:
-  - tox
+language: bash
 deploy:
   provider: script
   skip_cleanup: true
