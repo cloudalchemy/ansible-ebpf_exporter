@@ -1,6 +1,9 @@
 ---
 sudo: required
-language: bash
+language: python
+cache: pip
+install:
+  - pip install git-semver
 deploy:
   provider: script
   skip_cleanup: true
