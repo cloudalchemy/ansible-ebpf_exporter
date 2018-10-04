@@ -22,7 +22,7 @@ Due to nature of eBPF, configuration of this exporter might be tricky. To simpli
 
 ## Requirements
 
-- Ansible >= 2.4
+- Ansible >= 2.5 (It might work on previous versions, but we cannot guarantee it)
 - kernel >= 4.1
 - go-lang on deployer machine
 - libbcc on deployer machine
