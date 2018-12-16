@@ -1,7 +1,12 @@
 # Change Log
 
+## [**Next release**](https://galaxy.ansible.com/cloudalchemy/ebpf-exporter)
+
+**Closed issues:**
+
+- Release. [\#5](https://github.com/cloudalchemy/ansible-ebpf-exporter/issues/5)
+
 ## [0.0.1](https://galaxy.ansible.com/cloudalchemy/ebpf-exporter) (2018-09-16)
-## [0.0.0](https://galaxy.ansible.com/cloudalchemy/ebpf-exporter) (2018-09-16)
 **Closed issues:**
 
 - Add possibility to pass some ebpf program. [\#2](https://github.com/cloudalchemy/ansible-ebpf-exporter/issues/2)
