@@ -3,6 +3,8 @@ galaxy_info:
   author: Pawel Krupa
   description: Cloudflare eBPF exporter
   license: MIT
+  role_name: ebpf_exporter
+  company: none
   min_ansible_version: 2.4
   platforms:
     - name: Ubuntu

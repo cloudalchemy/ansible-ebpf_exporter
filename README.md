@@ -43,7 +43,7 @@ Use it in a playbook as follows:
 ```yaml
 - hosts: all
   roles:
-    - cloudalchemy.ebpf-exporter
+    - cloudalchemy.ebpf_exporter
 ```
 
 ### Demo site
