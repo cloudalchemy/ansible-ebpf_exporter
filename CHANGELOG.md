@@ -6,6 +6,10 @@
 
 - Release. [\#5](https://github.com/cloudalchemy/ansible-ebpf-exporter/issues/5)
 
+**Merged pull requests:**
+
+- move to ansible 2.7 [\#6](https://github.com/cloudalchemy/ansible-ebpf-exporter/pull/6) ([paulfantom](https://github.com/paulfantom))
+
 ## [0.0.1](https://galaxy.ansible.com/cloudalchemy/ebpf-exporter) (2018-09-16)
 **Closed issues:**
 
