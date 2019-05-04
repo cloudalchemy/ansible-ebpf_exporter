@@ -1,10 +1,20 @@
 ---
 sudo: required
 language: python
+python: 2.7
 cache: pip
+services:
+  - docker
+env:
+  - ANSIBLE=2.5
+  - ANSIBLE=2.6
+  - ANSIBLE=2.7
+matrix:
+  fast_finish: true
 install:
-  - pip install git-semver
-script: echo
+  - pip install tox-travis git-semver
+script:
+  - tox
 deploy:
   provider: script
   skip_cleanup: true
