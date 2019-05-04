@@ -5,6 +5,7 @@ galaxy_info:
   license: MIT
   role_name: ebpf_exporter
   company: none
+  min_ansible_version: 2.5
   platforms:
     - name: Ubuntu
       versions:
