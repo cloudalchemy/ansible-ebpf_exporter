@@ -3,6 +3,7 @@
 [Unit]
 Description=Prometheus eBPF Exporter
 After=network-online.target
+StartLimitInterval=0
 
 [Service]
 Type=simple
@@ -14,6 +15,7 @@ ExecStart=/usr/local/bin/ebpf_exporter \
 
 SyslogIdentifier=ebpf_exporter
 Restart=always
+RestartSec=1
 
 [Install]
 WantedBy=multi-user.target
