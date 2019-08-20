@@ -8,7 +8,7 @@
 
 ## DISCLAIMER
 
-:construction: THIS REPOSITORY IS A WORK IN PROGRESS :construction:
+Due to long period of lack of maintenance and lack of contributors this repository is now archived and development is stopped. If you want to become a maintainer please contact me at paulfantom@gmail.com
 
 ## Description
 
